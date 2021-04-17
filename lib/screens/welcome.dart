@@ -36,7 +36,8 @@ class _WelcomeState extends State<Welcome> {
                           Theme.of(context).textTheme.headline1.fontSize)),
             ),
             ClipOval(
-              child:Container(
+              child:AnimatedContainer(
+                      duration: Duration(milliseconds: 500),
                       height: MediaQuery.of(context).size.height * 0.5,
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: Image.network(
