@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
           fontFamily: "Georgia",
           shadowColor: Colors.grey,
           textTheme: TextTheme(
-            headline1: TextStyle(fontSize: 40,color: Colors.black)
+            headline1: TextStyle(fontSize: 25,color: Colors.black,fontWeight: FontWeight.bold)
           )
         ),
         initialRoute: "/",

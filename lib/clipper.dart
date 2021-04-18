@@ -7,7 +7,7 @@ class Clipper extends CustomClipper<Path> {
     path.moveTo(0.0, size.height);
     path.lineTo(0.0,size.height/2);
     var firstpoint = Offset(0,size.height/2);
-    var controlpoint = Offset(size.width/2,size.height);
+    var controlpoint = Offset(size.width,size.height/2);
     var endpoint = Offset(size.width,0.0);
     path.quadraticBezierTo(controlpoint.dx, controlpoint.dy, firstpoint.dx,firstpoint.dy);
     path.quadraticBezierTo(controlpoint.dx,controlpoint.dy,endpoint.dx,endpoint.dy);
