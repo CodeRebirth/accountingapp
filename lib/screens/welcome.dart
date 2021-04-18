@@ -9,15 +9,25 @@ class Welcome extends StatefulWidget {
 class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
   AnimationController animationController;
   Animation<double> animate;
+  AnimationController opacityController;
+  Animation<double> opacity;
+  
 @override
   void initState() {
-    animationController = new AnimationController(vsync: this,duration: Duration(milliseconds:500));
+    animationController = new AnimationController(vsync: this,duration: Duration(milliseconds:1000));
     animate = Tween<double>(begin: 0,end:1).animate(animationController)..addListener(() {
       setState(() {
         
       });
     });
     animationController.forward();
+    opacityController = new AnimationController(vsync: this,duration: Duration(milliseconds:2000));
+    opacity = Tween<double>(begin: 0,end:1).animate(opacityController)..addListener(() {
+      setState(() {
+        
+      });
+    });
+    opacityController.forward();
     super.initState();
   }
   @override
@@ -46,17 +56,20 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
               ],)
             ),
       ),
-       Positioned(
-         top: 140,
-         bottom:0,
-         left:30,
-         child: Column(
-           children: [
-             Text("WELCOME TO",style: Theme.of(context).textTheme.headline1,),
-             SizedBox(height: 20,),
-             Text("AKOUNT",style: TextStyle(fontSize: 60,color: Colors.white,letterSpacing: 10))
-           ],
-         ),),
+      Positioned(
+           top: 140,
+           bottom:0,
+           left:30,
+           child: Opacity(
+               opacity: opacity.value,
+               child: Column(
+               children: [
+                 Text("WELCOME TO",style: Theme.of(context).textTheme.headline1,),
+                 SizedBox(height: 20,),
+                 Text("AKOUNT",style: TextStyle(fontSize: 60,color: Colors.white,letterSpacing: 10))
+               ],
+             ),
+           ),),
       ],
     ),
   );
