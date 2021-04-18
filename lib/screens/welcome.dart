@@ -15,7 +15,7 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
 @override
   void initState() {
     animationController = new AnimationController(vsync: this,duration: Duration(milliseconds:1000));
-    animate = Tween<double>(begin: 0,end:1).animate(animationController)..addListener(() {
+    animate = Tween<double>(begin: 0,end:1).animate(CurvedAnimation(parent: animationController,curve:Curves.easeOut))..addListener(() {
       setState(() {
         
       });
