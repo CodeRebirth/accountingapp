@@ -1,5 +1,6 @@
 import 'package:accountingapp/screens/homepage.dart';
 import 'package:flutter/material.dart';
+import 'screens/navpage.dart';
 import 'screens/welcome.dart';
 
 void main() {
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
         initialRoute: "/",
         routes: {
           "/":(context)=> Welcome(),
-          "homepage":(context)=>HomePage()
+          "homepage":(context)=>HomePage(),
+          "navpage":(context)=>NavPage(),
         },
       )
     );
