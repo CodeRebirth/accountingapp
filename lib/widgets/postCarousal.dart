@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PostCarousal extends StatelessWidget{
+  final List<String> _text=["Billing","Inventory","Scan"];
   final PageController _pageController;
   PostCarousal(this._pageController);
   Widget build(BuildContext context) {
@@ -9,7 +10,7 @@ class PostCarousal extends StatelessWidget{
             color: Colors.amber[200],
             child: PageView.builder(
             controller:_pageController,
-            itemCount: 10,
+            itemCount: 3,
             itemBuilder:(context,index){
           return  AnimatedBuilder(
             //animation is done here
@@ -22,7 +23,7 @@ class PostCarousal extends StatelessWidget{
             }
              return Center(
                child: SizedBox(
-                 height:Curves.easeInOut.transform(value)*500.0,
+                 height:Curves.easeInOut.transform(value)*450.0,
                  child: widget,
                  ),
               );
@@ -37,15 +38,17 @@ class PostCarousal extends StatelessWidget{
                 borderRadius: BorderRadius.circular(15.0),
                 boxShadow: [
                   BoxShadow(color:Colors.black26,
-                  offset: Offset(0, 2),
+                  offset: Offset(0, 3),
                   blurRadius: 6.0
                   ),
                   ]
               ),
               child: Container(
                 decoration: BoxDecoration(color: Colors.black, borderRadius:BorderRadius.circular(10)),
+                child: Center(child: Text(_text[index],style: TextStyle(color: Colors.white,fontSize:40,fontFamily:"Philoshoper"),)),
               )
             ),
+           
           ],
       ),
     );
