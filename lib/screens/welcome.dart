@@ -66,7 +66,10 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
                children: [
                  Text("WELCOME TO",style: Theme.of(context).textTheme.headline1,),
                  SizedBox(height: 20,),
-                 Text("AKOUNT",style: TextStyle(fontSize: 60,color: Colors.white,letterSpacing: 10))
+                 FittedBox(
+                   fit: BoxFit.cover,
+                   child: Text("AKOUNT",style: TextStyle(fontSize:50,color: Colors.white,letterSpacing: 10))
+                   )
                ],
              ),
            ),),
