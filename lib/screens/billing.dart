@@ -46,7 +46,7 @@ class _BillingState extends State<Billing> {
               ],
             )
           ),
-          isScrollControlled: true
+          isScrollControlled: true//important
           );
             },
             child: Icon(Icons.add),),
