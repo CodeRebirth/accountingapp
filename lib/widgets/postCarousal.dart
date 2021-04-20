@@ -12,7 +12,7 @@ class PostCarousal extends StatelessWidget{
             controller:_pageController,
             itemCount: 3,
             itemBuilder:(context,index){
-          return  AnimatedBuilder(
+    return  AnimatedBuilder(
             //animation is done here
           animation:_pageController,
           builder: (BuildContext context,Widget widget){
@@ -21,7 +21,7 @@ class PostCarousal extends StatelessWidget{
               value = _pageController.page - index;
               value = (1-(value.abs()*0.25)).clamp(0.0, 1.0);
             }
-             return Center(
+    return Center(
                child: SizedBox(
                  height:Curves.easeInOut.transform(value)*450.0,
                  child: widget,
@@ -43,17 +43,23 @@ class PostCarousal extends StatelessWidget{
                   ),
                   ]
               ),
-              child: Container(
-                decoration: BoxDecoration(color: Colors.black, borderRadius:BorderRadius.circular(10)),
-                child: Center(child: Text(_text[index],style: TextStyle(color: Colors.white,fontSize:40,fontFamily:"Philoshoper"),)),
+              child: GestureDetector(
+                onTap: (){
+                  if(index == 0){
+                  Navigator.of(context).pushNamed("billing");
+                  }
+                },
+                  child: Container(
+                  decoration: BoxDecoration(color: Colors.black, borderRadius:BorderRadius.circular(10)),
+                  child: Center(child: Text(_text[index],style: TextStyle(color: Colors.white,fontSize:40,fontFamily:"Philoshoper"),)),
+                ),
               )
             ),
-           
           ],
       ),
     );
   },
 ),
 );
-  }
+}
 }

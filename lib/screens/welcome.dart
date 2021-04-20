@@ -73,8 +73,13 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
                ],
              ),
            ),),
-      ],
-    ),
+      ]),
   );
+  }
+@override
+  void dispose() {
+    animationController.dispose();
+    opacityController.dispose();
+    super.dispose();
   }
 }

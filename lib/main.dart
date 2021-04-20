@@ -1,5 +1,6 @@
 import 'package:accountingapp/screens/homepage.dart';
 import 'package:flutter/material.dart';
+import 'screens/billing.dart';
 import 'screens/navpage.dart';
 import 'screens/welcome.dart';
 
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
           "/":(context)=> Welcome(),
           "homepage":(context)=>HomePage(),
           "navpage":(context)=>NavPage(),
+          "billing":(context)=>Billing(),
         },
       )
     );
