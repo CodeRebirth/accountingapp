@@ -1,6 +1,5 @@
-
-
 import 'package:flutter/material.dart';
+import '../Products/product.dart';
 
 class Billing extends StatefulWidget {
   @override
@@ -9,10 +8,14 @@ class Billing extends StatefulWidget {
 class _BillingState extends State<Billing> {
   TextEditingController _itemController = new TextEditingController();
   TextEditingController _priceController = new TextEditingController();
+  void clearafter(){
+    _itemController.clear();
+    _priceController.clear();
+  }
+  List<Product> products=[];
   @override
   Widget build(BuildContext context) {
         return Scaffold(
-          
           floatingActionButton: FloatingActionButton(
             backgroundColor: Colors.amber,
             onPressed:(){
@@ -29,13 +32,15 @@ class _BillingState extends State<Billing> {
                 SizedBox(height:30),
                 TextFormField(
                 decoration: InputDecoration(labelText: "Price",labelStyle: TextStyle(color:Colors.black)), 
-                controller: _priceController,
-                
+                controller: _priceController,  
                 ),
                 SizedBox(height: 40,),
                 ElevatedButton(
                 style: ButtonStyle(backgroundColor:MaterialStateProperty.all<Color>(Colors.green)) ,
-                onPressed: (){     
+                onPressed: (){ 
+                var prod=Product(_itemController.value.text, _priceController.value.text);
+                products.add(prod);
+                clearafter();
                 Navigator.of(context).pop();
                 }, child: Text("Save"))
               ],
@@ -46,11 +51,18 @@ class _BillingState extends State<Billing> {
             },
             child: Icon(Icons.add),),
           body: Container(
+            padding: EdgeInsets.all(20),
             height:MediaQuery.of(context).size.height,
             width:MediaQuery.of(context).size.width,
               child:ListView.builder(itemBuilder:(context,index){
-               return Center(child: Text("$index"));
-              },itemCount: 100,
+               return Center(child: Row(
+                 mainAxisAlignment:MainAxisAlignment.spaceBetween,
+                 children:[
+                   Text(products[index].name,style: TextStyle(fontSize:30)),
+                   Text(products[index].price,style: TextStyle(fontSize:30))
+                 ]
+               ));
+              },itemCount: products.length,
             )
           ));
   }
