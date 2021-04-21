@@ -84,7 +84,7 @@ TextEditingController _priceController = new TextEditingController();
             itemBuilder: (context, index) {
                 return Card(
                           elevation: 3,
-                          margin:EdgeInsets.all(10), 
+                          margin:EdgeInsets.all(5), 
                             child: ListTile(
                                 horizontalTitleGap: 50,
                                 contentPadding: EdgeInsets.all(10),
@@ -97,8 +97,11 @@ TextEditingController _priceController = new TextEditingController();
                                 ),
                               )
                         ),
-                        title: Text("${products[index].name}",
-                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize:30)
+                        title: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text("${products[index].name}",
+                          style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize:30)
+                          ),
                         ),
                         trailing: IconButton(icon:Icon(Icons.delete),onPressed: (){},),
                         ),

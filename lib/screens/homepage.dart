@@ -1,12 +1,9 @@
 import 'package:accountingapp/widgets/postCarousal.dart';
 import 'package:flutter/material.dart';
-
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
-
 class _HomePageState extends State<HomePage> {
   PageController _pageController;
 @override
@@ -17,9 +14,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 0,
+      ),
         body:Container(
-            child:
-              PostCarousal(_pageController)       
+            child:PostCarousal(_pageController)       
 ),
 );
 }
