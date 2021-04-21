@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../Products/product.dart';
+import '../models/product.dart';
 
 class Billing extends StatefulWidget {
   @override
