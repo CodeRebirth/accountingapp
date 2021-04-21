@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-
 class PostCarousal extends StatelessWidget{
-  final List<String> _text=["Billing","Inventory","Scan"];
+  final imagesList=["assets/images/Billing.png","assets/images/Inventory.png","assets/images/Scan.png"];
   final PageController _pageController;
   PostCarousal(this._pageController);
   Widget build(BuildContext context) {
-    return Container(
-            height: MediaQuery.of(context).size.height,
-            color: Colors.amber[200],
-            child: PageView.builder(
+    return PageView.builder(
             controller:_pageController,
             itemCount: 3,
             itemBuilder:(context,index){
@@ -28,38 +24,18 @@ class PostCarousal extends StatelessWidget{
                  ),
               );
           },
-          child: Stack(
-            //put here for on top image details
-          children:<Widget> [
-            Container(
-              margin: EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                color: Colors.white60,
-                borderRadius: BorderRadius.circular(15.0),
-                boxShadow: [
-                  BoxShadow(color:Colors.black26,
-                  offset: Offset(0, 3),
-                  blurRadius: 6.0
-                  ),
-                  ]
-              ),
-              child: GestureDetector(
-                onTap: (){
-                  if(index == 0){
-                  Navigator.of(context).pushNamed("billing");
-                  }
-                },
-                  child: Container(
-                  decoration: BoxDecoration(color: Colors.black, borderRadius:BorderRadius.circular(10)),
-                  child: Center(child: Text(_text[index],style: TextStyle(color: Colors.white,fontSize:40,fontFamily:"Philoshoper"),)),
-                ),
-              )
-            ),
-          ],
-      ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GestureDetector(
+                  onTap: (){
+                    if(index == 0){
+                    Navigator.of(context).pushNamed("billing");
+                    }
+                  },
+                    child:Image.asset(imagesList[index],fit:BoxFit.cover)),
+          ),
     );
   },
-),
 );
 }
 }

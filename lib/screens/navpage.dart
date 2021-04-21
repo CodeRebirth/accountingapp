@@ -30,8 +30,7 @@ class _NavPageState extends State<NavPage> {
           });
         },
         items: [
-        BottomNavigationBarItem(
-          
+        BottomNavigationBarItem( 
           icon: Icon(Icons.home),label: "Home"
           ),
          BottomNavigationBarItem(

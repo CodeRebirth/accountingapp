@@ -17,14 +17,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body:SingleChildScrollView(
-            child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              PostCarousal(_pageController)
-         ],
-),
+        body:Container(
+            child:
+              PostCarousal(_pageController)       
 ),
 );
 }
