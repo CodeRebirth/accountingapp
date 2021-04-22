@@ -34,7 +34,7 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
   Widget build(BuildContext context) {
     return Scaffold(
     floatingActionButton:  Container(height:70,width:70,child: FloatingActionButton(backgroundColor: Colors.black,child:Icon(Icons.arrow_right,size:50),onPressed: (){
-      Navigator.of(context).pushNamed("navpage");
+      Navigator.of(context).pushNamed("navpage",);
     },)),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     body:Stack(
