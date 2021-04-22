@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/product.dart';
+import 'package:provider/provider.dart';
+import '../provider/products.dart';
 import '../widgets/empty.dart';
 
 class Billing extends StatefulWidget {
@@ -9,30 +10,18 @@ class Billing extends StatefulWidget {
 
 class _BillingState extends State<Billing> with SingleTickerProviderStateMixin {
   
-List<Product> products = [];
 TextEditingController _itemController = new TextEditingController();
 TextEditingController _priceController = new TextEditingController();
 
-  void onSubmitted(){
-      var prod = Product(_itemController.value.text,_priceController.value.text);
-      setState(() {
-      products.add(prod);
-      clearafter();
-      }); 
-      Navigator.of(context).pop();
-  }
   void clearafter() {
     _itemController.clear();
     _priceController.clear();
   }
-  void delete(int index){
-    setState(() {
-        products.removeAt(index);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
+  var prod = Provider.of<Products>(context);
+  var products = prod.prod;
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.amber,
@@ -50,7 +39,6 @@ TextEditingController _priceController = new TextEditingController();
                           decoration: InputDecoration(
                               labelText: "Item Name",
                               labelStyle: TextStyle(color: Colors.black)),
-                          onFieldSubmitted: (_)=>onSubmitted(),
                           controller: _itemController,
                         ),
                         SizedBox(height: 30),
@@ -59,7 +47,7 @@ TextEditingController _priceController = new TextEditingController();
                           decoration: InputDecoration(
                               labelText: "Price",
                               labelStyle: TextStyle(color: Colors.black)),
-                          onFieldSubmitted: (_)=>onSubmitted(),
+                          //  onFieldSubmitted: 
                           controller: _priceController,
                         ),
                         SizedBox(
@@ -70,7 +58,11 @@ TextEditingController _priceController = new TextEditingController();
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
                                         Colors.green)),
-                            onPressed: onSubmitted,
+                            onPressed:(){
+                              var item = Product(_itemController.value.text,_priceController.value.text);
+                              prod.addProduct(item);
+                              clearafter();
+                              Navigator.of(context).pop();},
                             child: Text("Save"))
                       ],
                     )),
@@ -107,7 +99,9 @@ TextEditingController _priceController = new TextEditingController();
                           style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize:30)
                           ),
                         ),
-                        trailing: IconButton(icon:Icon(Icons.delete),onPressed:()=>delete(index),),
+                        trailing: IconButton(icon:Icon(Icons.delete),onPressed:(){
+                          prod.delete(index);
+                        },),
                         ),
                 );
               },

@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
-class PostCarousal extends StatelessWidget{
+class PostCarousal extends StatefulWidget{
+  @override
+  _PostCarousalState createState() => _PostCarousalState();
+}
+
+class _PostCarousalState extends State<PostCarousal> {
   final imagesList=["assets/images/Billing.png","assets/images/Inventory.png","assets/images/Scan.png"];
-  final PageController _pageController;
-  PostCarousal(this._pageController);
+
+  PageController _pageController;
+ void initState() {
+    _pageController = PageController(initialPage: 0,viewportFraction: 0.8);
+    super.initState();
+  }
   Widget build(BuildContext context) {
     return PageView.builder(
           controller:_pageController,
