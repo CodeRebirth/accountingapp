@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/product.dart';
+import '../widgets/empty.dart';
 
 class Billing extends StatefulWidget {
   @override
@@ -7,9 +8,7 @@ class Billing extends StatefulWidget {
 }
 
 class _BillingState extends State<Billing> with SingleTickerProviderStateMixin {
-// AnimationController animated;
-// Animation<Transform> animation; 
-
+  
 List<Product> products = [];
 TextEditingController _itemController = new TextEditingController();
 TextEditingController _priceController = new TextEditingController();
@@ -25,6 +24,11 @@ TextEditingController _priceController = new TextEditingController();
   void clearafter() {
     _itemController.clear();
     _priceController.clear();
+  }
+  void delete(int index){
+    setState(() {
+        products.removeAt(index);
+    });
   }
 
   @override
@@ -75,7 +79,7 @@ TextEditingController _priceController = new TextEditingController();
           },
           child: Icon(Icons.add),
         ),
-        body: Container(
+        body: products.isEmpty?Empty():Container(
             padding: EdgeInsets.all(20),
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
@@ -103,7 +107,7 @@ TextEditingController _priceController = new TextEditingController();
                           style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize:30)
                           ),
                         ),
-                        trailing: IconButton(icon:Icon(Icons.delete),onPressed: (){},),
+                        trailing: IconButton(icon:Icon(Icons.delete),onPressed:()=>delete(index),),
                         ),
                 );
               },
