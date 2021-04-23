@@ -1,10 +1,12 @@
-import 'package:accountingapp/screens/homepage.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/billing.dart';
 import 'screens/navpage.dart';
 import 'screens/welcome.dart';
 import 'provider/products.dart';
+import 'screens/billViewer.dart';
+import 'screens/homepage.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,6 +34,7 @@ class MyApp extends StatelessWidget {
             "homepage":(context)=>HomePage(),
             "navpage":(context)=>NavPage(),
             "billing":(context)=>Billing(),
+            "billViewer":(context)=>BillViewer()
           },
         )
       ),

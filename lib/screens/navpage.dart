@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'homepage.dart';
 import 'more.dart';
+import 'mybill.dart';
 import 'settings.dart';
 
 class NavPage extends StatefulWidget {
@@ -14,11 +15,13 @@ class _NavPageState extends State<NavPage> {
     HomePage(),
     Settings(),
     More(),
+    MyBill(),
     ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         unselectedItemColor: Colors.black,
         elevation: 0,
         selectedItemColor: Colors.white,        
@@ -33,12 +36,15 @@ class _NavPageState extends State<NavPage> {
         BottomNavigationBarItem( 
           icon: Icon(Icons.home),label: "Home"
           ),
-         BottomNavigationBarItem(
+        BottomNavigationBarItem(
            icon: Icon(Icons.settings),label: "Settings"
            ),
-           BottomNavigationBarItem(
+        BottomNavigationBarItem(
              icon: Icon(Icons.more),label: "More"
-             )
+           ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.money),label: "Bills"
+        )     
       ],),
       body: _widget[_currentIndex],
     );
