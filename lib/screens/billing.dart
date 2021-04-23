@@ -13,7 +13,7 @@ class _BillingState extends State<Billing> with SingleTickerProviderStateMixin {
 TextEditingController _itemController = new TextEditingController();
 TextEditingController _priceController = new TextEditingController();
 
-  void clearafter() {
+void clearafter() {
     _itemController.clear();
     _priceController.clear();
   }
@@ -22,11 +22,34 @@ TextEditingController _priceController = new TextEditingController();
   Widget build(BuildContext context) {
   var prod = Provider.of<Products>(context);
   var products = prod.prod;
+
+  void onsaved(){
+    var item = Product(_itemController.value.text,_priceController.value.text);
+    clearafter();
+    prod.addProduct(item);
+    Navigator.of(context).pop(); 
+  }
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor:Colors.green,
+          elevation:0,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(icon:Icon(Icons.save),onPressed: (){
+                if(prod.products != null)
+                prod.saved();
+                setState(() {
+                prod.products = [];
+                });
+              }),
+            )
+          ],
+        ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.amber,
           onPressed: () {
-            showModalBottomSheet(
+             showModalBottomSheet(
                 context: context,
                 builder: (ctx) => Container(
                     height: 500,
@@ -49,6 +72,7 @@ TextEditingController _priceController = new TextEditingController();
                               labelStyle: TextStyle(color: Colors.black)),
                           //  onFieldSubmitted: 
                           controller: _priceController,
+                          onFieldSubmitted: (_){onsaved();},
                         ),
                         SizedBox(
                           height: 40,
@@ -58,11 +82,10 @@ TextEditingController _priceController = new TextEditingController();
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
                                         Colors.green)),
-                            onPressed:(){
-                              var item = Product(_itemController.value.text,_priceController.value.text);
-                              prod.addProduct(item);
-                              clearafter();
-                              Navigator.of(context).pop();},
+                            onPressed:()
+                            {
+                              onsaved();
+                            },
                             child: Text("Save"))
                       ],
                     )),
