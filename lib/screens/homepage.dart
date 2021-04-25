@@ -14,7 +14,6 @@ class HomePage extends StatelessWidget {
         body:Container(
         child:PostCarousal()       
 ),
-);
-}
+);}
 }
 

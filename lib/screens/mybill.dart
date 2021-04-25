@@ -1,6 +1,7 @@
-import 'package:accountingapp/provider/products.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../widgets/tile.dart';
+import '../provider/products.dart';
 
 class MyBill extends StatefulWidget {
   @override
@@ -34,13 +35,11 @@ class _MyBillState extends State<MyBill> {
         child: ListView.builder(
           itemCount: key.length,
           itemBuilder:(BuildContext context,int index){
-            return ListTile(
-            onTap: (){
-              Navigator.of(context).pushNamed("billViewer");
-            },
-            leading: Text('$index'),
-            title:Text(key[index])
-            );
+            return GestureDetector(
+              onTap: (){
+                Navigator.of(context).pushNamed("billViewer");
+              },
+              child: Tile(index,key));
           }
         )
       ):Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.green),))
