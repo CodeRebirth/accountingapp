@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../widgets/tile.dart';
@@ -37,7 +38,7 @@ class _MyBillState extends State<MyBill> {
           itemBuilder:(BuildContext context,int index){
             return GestureDetector(
               onTap: (){
-                Navigator.of(context).pushNamed("billViewer");
+                Navigator.of(context).pushNamed("billViewer",arguments: key[index]);
               },
               child: Tile(index,key));
           }

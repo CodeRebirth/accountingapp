@@ -6,7 +6,9 @@ class Tile extends StatelessWidget {
   Tile(this.index,this.keys);
   @override
   Widget build(BuildContext context) {
-    return Card(elevation: 3,
+    return Card(
+      shadowColor: Colors.green,
+      elevation:0,
                             margin:EdgeInsets.all(5), 
                             child: ListTile(
                                 horizontalTitleGap: 50,

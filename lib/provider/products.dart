@@ -42,11 +42,27 @@ keys=tempKey;
 }
 }
 
+Future<void> getitem(id) async{
+  var url = Uri.parse("https://accountingapp-a68b2-default-rtdb.firebaseio.com/products/$id.json");
+  List<Product> items = [];
+  try{
+    var response = await http.get(url);
+    var extracted = json.decode(response.body) as Map<String,dynamic>;
+    for (var i in extracted['bills'] as List){
+      items.add(Product(i["name"],i["price"]));
+    }
+    products=items;
+  }catch(err){
+    print(err);
+  }
+}
+
 //delete
 void delete(int value){
   products.removeAt(value);
   notifyListeners();
 }
+//get keys
 get getkeys{
   return [...keys];
 }
@@ -54,8 +70,8 @@ get getkeys{
 get prod{
   return [...products];
 }
-
 }
+
 
 class Product{
 String name;
