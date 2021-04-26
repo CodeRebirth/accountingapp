@@ -19,10 +19,10 @@ class _BillViewerState extends State<BillViewer> {
   @override
   void didChangeDependencies() { 
     if(isInit){
-    var id = ModalRoute.of(context).settings.arguments;   
+    var id = ModalRoute.of(context)!.settings.arguments;   
     var object=Provider.of<Products>(context,listen:false);
     object.getitem(id).then((_) =>{
-      items = object.prod,
+      items = object.fetchItems,
       setState(() {
         done = true;
       })

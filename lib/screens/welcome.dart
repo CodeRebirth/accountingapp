@@ -7,10 +7,10 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
-  AnimationController animationController;
-  Animation<double> animate;
-  AnimationController opacityController;
-  Animation<double> opacity;
+  late AnimationController animationController;
+  late Animation<double> animate;
+  late AnimationController opacityController;
+  late Animation<double> opacity;
   
 @override
   void initState() {
@@ -51,7 +51,7 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.bottomCenter,end: Alignment.topCenter,
-              colors: [Colors.amber[700],Colors.red])),
+              colors: [Colors.amber,Colors.red])),
               child:Column(children: [
               ],)
             ),

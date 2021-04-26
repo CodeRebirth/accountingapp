@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 
 class Products with ChangeNotifier{
 List<Product> products = [];
+List<Product> fetchItems = [];
 List keys=[];
 static const url = "https://accountingapp-a68b2-default-rtdb.firebaseio.com/products.json";
 var uri = Uri.parse(url);
@@ -51,7 +52,7 @@ Future<void> getitem(id) async{
     for (var i in extracted['bills'] as List){
       items.add(Product(i["name"],i["price"]));
     }
-    products=items;
+    fetchItems=items;
   }catch(err){
     print(err);
   }
@@ -65,6 +66,9 @@ void delete(int value){
 //get keys
 get getkeys{
   return [...keys];
+}
+get fetchItem{
+return [...fetchItems];
 }
 //getter
 get prod{

@@ -7,8 +7,8 @@ class Empty extends StatefulWidget {
 }
 
 class _EmptyState extends State<Empty> with SingleTickerProviderStateMixin {
-  AnimationController animationController;
-  Animation<double> animation;
+  late AnimationController animationController;
+  late Animation<double> animation;
 @override
   void initState() {
     animationController = new AnimationController(vsync: this, duration: Duration(milliseconds: 500));

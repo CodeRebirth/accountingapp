@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/billing.dart';
 import 'screens/navpage.dart';
+import 'screens/scanner.dart';
 import 'screens/welcome.dart';
 import 'provider/products.dart';
 import 'screens/billViewer.dart';
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
             "homepage":(context)=>HomePage(),
             "navpage":(context)=>NavPage(),
             "billing":(context)=>Billing(),
-            "billViewer":(context)=>BillViewer()
+            "billViewer":(context)=>BillViewer(),
+            "scanner":(context)=>Scanner()
           },
         )
       ),

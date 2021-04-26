@@ -7,8 +7,8 @@ class More extends StatefulWidget {
 }
 
 class _MoreState extends State<More> with TickerProviderStateMixin{
-  AnimationController scaleController;
-  Animation<double> animation;
+  late AnimationController scaleController;
+  late Animation<double> animation;
 
 @override
   void initState() {

@@ -7,7 +7,7 @@ class PostCarousal extends StatefulWidget{
 class _PostCarousalState extends State<PostCarousal> {
   final imagesList=["assets/images/Billing.png","assets/images/Inventory.png","assets/images/Scan.png"];
 
-  PageController _pageController;
+  late PageController _pageController;
  void initState() {
     _pageController = PageController(initialPage: 0,viewportFraction: 0.8);
     super.initState();
@@ -20,13 +20,13 @@ class _PostCarousalState extends State<PostCarousal> {
     return AnimatedBuilder(
             //animation is done here
           animation:_pageController,
-          builder: (BuildContext context,Widget widget){
+          builder: (BuildContext context,Widget? widget){
           double value = 1;
             if(_pageController.position.haveDimensions){
-              value = _pageController.page - index;
+              value = _pageController.page! - index;
               value = (1-(value.abs()*0.25)).clamp(0.0, 1.0);
             }
-    return Center(
+           return Center(
                child: SizedBox(
                  height:Curves.easeInOut.transform(value)*380.0,
                  child: widget,
@@ -39,6 +39,9 @@ class _PostCarousalState extends State<PostCarousal> {
               onTap: (){
                       if(index == 0){
                       Navigator.of(context).pushNamed("billing");
+                      }
+                      else if(index == 2){
+                      Navigator.of(context).pushNamed("scanner");
                       }
                     },
                       child:ClipRRect(

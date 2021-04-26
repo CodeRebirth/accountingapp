@@ -37,6 +37,7 @@ void clearafter() {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: IconButton(icon:Icon(Icons.save),onPressed: (){
+                // ignore: unnecessary_null_comparison
                 if(prod.products != null)
                 prod.saved();
                 setState(() {
