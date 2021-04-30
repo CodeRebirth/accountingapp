@@ -26,12 +26,12 @@ class _EmptyState extends State<Empty> with SingleTickerProviderStateMixin {
         ClipPath(
         clipper: EmptyClipper(),
         child: Container( 
-        color: Colors.green
+        color: Colors.blue[900],
         )),
        Positioned(
          top: animation.value,
          child: Container(
-           child:Text("Let's add bill",style:TextStyle(color: Colors.black,fontSize: 30))
+           child:Text("Let's add bill",style:TextStyle(color: Colors.white,fontSize: 30))
          ),
        ),
         ]

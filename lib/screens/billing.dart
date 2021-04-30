@@ -31,7 +31,7 @@ void clearafter() {
   }
     return Scaffold(
         appBar: AppBar(
-          backgroundColor:Colors.green,
+          backgroundColor:Colors.blue[900],
           elevation:0,
           actions: [
             Padding(
@@ -48,7 +48,7 @@ void clearafter() {
           ],
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.amber,
+          backgroundColor: Colors.yellow[900],
           onPressed: () {
              showModalBottomSheet(
                 context: context,
@@ -81,8 +81,8 @@ void clearafter() {
                         ElevatedButton(
                             style: ButtonStyle(
                                 backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        Colors.green)),
+                                    MaterialStateProperty.all<Color?>(
+                                        Colors.yellow[900])),
                             onPressed:()
                             {
                               onsaved();

@@ -42,7 +42,7 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
         Transform.scale(
           scale: animate.value,
             child: Container(
-            color: Colors.amber[300],
+            color: Colors.blue[900],
           ),
         ),
          ClipPath(
@@ -51,7 +51,7 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.bottomCenter,end: Alignment.topCenter,
-              colors: [Colors.amber,Colors.red])),
+              colors: [Colors.white,Colors.white])),
               child:Column(children: [
               ],)
             ),

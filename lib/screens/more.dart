@@ -27,10 +27,10 @@ class _MoreState extends State<More> with TickerProviderStateMixin{
           child: ClipPath(
           clipper: MoreClipper(),
           child: Container(
-          color: Colors.amber,
+          color: Colors.blue[900],
           child: Center(
             child:Text("Devloped by Leonard",
-            style:TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize:30,fontFamily:"Philoshoper"),) 
+            style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize:30,fontFamily:"Philoshoper"),) 
             ,))
         ),
     );

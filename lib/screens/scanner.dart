@@ -69,7 +69,11 @@ class _ScannerState extends State<Scanner> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            appBar: AppBar(title: const Text('Barcode scan')),
+            appBar: AppBar(
+              backgroundColor: Colors.blue[900],
+              elevation: 0,
+              title: const Text('Barcode scan')
+              ),
             body: Builder(builder: (BuildContext context) {
               return Container(
                   alignment: Alignment.center,
@@ -78,6 +82,7 @@ class _ScannerState extends State<Scanner> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         ElevatedButton(
+                            style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.yellow[900])),
                             onPressed: () => scanBarcodeNormal(),
                             child: Text('Start barcode scan')),
 

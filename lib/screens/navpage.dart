@@ -25,7 +25,7 @@ class _NavPageState extends State<NavPage> {
         unselectedItemColor: Colors.black,
         elevation: 0,
         selectedItemColor: Colors.white,        
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.blue[900],
         currentIndex: _currentIndex,
         onTap: (index){
           setState(() {

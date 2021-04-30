@@ -45,7 +45,7 @@ class _BillViewerState extends State<BillViewer> {
                                 contentPadding: EdgeInsets.all(10),
                                 leading: CircleAvatar(
                                 radius:30,
-                                backgroundColor:Colors.green,
+                                backgroundColor:Colors.blue[900],
                                 child: Padding(
                                   padding: EdgeInsets.all(1),
                                   child: FittedBox(child:Text('${items[index].price}',style: TextStyle(color: Colors.white,fontSize:20))
