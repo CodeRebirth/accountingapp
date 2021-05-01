@@ -23,9 +23,11 @@ class _BillViewerState extends State<BillViewer> {
     var object=Provider.of<Products>(context,listen:false);
     object.getitem(id).then((_) =>{
       items = object.fetchItems,
-      setState(() {
+      if(mounted){
+        setState(() {
         done = true;
       })
+      }
     });
     }
     isInit = false;

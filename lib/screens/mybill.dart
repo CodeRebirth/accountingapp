@@ -18,12 +18,15 @@ class _MyBillState extends State<MyBill> {
   }
 @override
   void didChangeDependencies() {
+  
   var object = Provider.of<Products>(context,listen:false);
   object.getProducts().then((value) => {
     key = object.getkeys,
-    setState(() {
+    if(mounted){
+      setState(() {
       done = true;
     })
+    }
     }
   );
     super.didChangeDependencies();

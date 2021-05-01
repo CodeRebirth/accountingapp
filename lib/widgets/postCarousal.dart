@@ -40,9 +40,12 @@ class _PostCarousalState extends State<PostCarousal> {
                       if(index == 0){
                       Navigator.of(context).pushNamed("billing");
                       }
+                      else if(index == 1){
+                      Navigator.of(context).pushNamed("inventory");
+                      }
                       else if(index == 2){
                       Navigator.of(context).pushNamed("scanner");
-                      }
+                      }    
                     },
                       child:ClipRRect(
                         borderRadius: BorderRadius.circular(10),

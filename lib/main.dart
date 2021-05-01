@@ -5,8 +5,11 @@ import 'screens/navpage.dart';
 import 'screens/scanner.dart';
 import 'screens/welcome.dart';
 import 'provider/products.dart';
+import 'provider/inventory.dart';
 import 'screens/billViewer.dart';
+import 'screens/inventory.dart';
 import 'screens/homepage.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -15,8 +18,11 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-         create:(ctx)=>Products(),
+    return MultiProvider(
+      providers: [  
+        ChangeNotifierProvider<Products>(create: (ctx)=>Products(),),
+        ChangeNotifierProvider<InvProducts>(create: (ctx)=>InvProducts(),),
+        ],
           child: (
         MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -35,6 +41,7 @@ class MyApp extends StatelessWidget {
             "homepage":(context)=>HomePage(),
             "navpage":(context)=>NavPage(),
             "billing":(context)=>Billing(),
+            "inventory":(context)=>Inventory(),
             "billViewer":(context)=>BillViewer(),
             "scanner":(context)=>Scanner()
           },
