@@ -33,35 +33,54 @@ class _InventoryState extends State<Inventory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: done?Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: ListView.builder(
-          itemCount: items.length, itemBuilder: (BuildContext context, int index) { 
-            return SizedBox(
-              height: 35,
-              child: Row(
-              
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(items[index].id)),
-                FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child:Text(items[index].name)),
-                FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child:Text(items[index].price)),
-                FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child:Text(items[index].qty))
-              ],
-              ),
-            );
-           },
-        ),
-      ):Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.green),))
+      appBar: AppBar(title:Text("Inventory")),
+      body: done?Column(
+          children: [
+            SizedBox(height: 20,),
+            Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+             children: [FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text("Product id")),
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child:Text("Product name")),
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child:Text("price")),
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child:Text("qty"))
+             ]),
+            Container(
+              height: MediaQuery.of(context).size.height*0.85,
+              child: ListView.builder(
+              itemCount: items.length, itemBuilder: (BuildContext context, int index) { 
+                return SizedBox(
+                  height: 35,
+                  child: Row( 
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(items[index].id)),
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child:Text(items[index].name)),
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child:Text(items[index].price)),
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child:Text(items[index].qty))
+                  ],
+                  ),
+                );
+               },
+          ),
+            ),
+          ]
+      ):Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.green)))
     );
   }
 }
