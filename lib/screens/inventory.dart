@@ -33,7 +33,10 @@ class _InventoryState extends State<Inventory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:Text("Inventory")),
+      appBar: AppBar(
+        backgroundColor: Colors.blue[900],
+        title:Text("Inventory")),
+
       body: done?Column(
           children: [
             SizedBox(height: 20,),

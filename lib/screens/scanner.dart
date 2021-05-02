@@ -79,13 +79,13 @@ class _ScannerState extends State<Scanner> {
                   alignment: Alignment.center,
                   child: Flex(
                       direction: Axis.vertical,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         ElevatedButton(
                             style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.yellow[900])),
                             onPressed: () => scanBarcodeNormal(),
                             child: Text('Start barcode scan')),
-
+                          SizedBox(height: 25,),
                         Text('Scan result : $_scanBarcode\n',
                             style: TextStyle(fontSize: 20))
                       ]));
