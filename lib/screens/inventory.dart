@@ -22,9 +22,10 @@ class _InventoryState extends State<Inventory> {
      var object=Provider.of<InvProducts>(context,listen:false);
      object.getAll().then(
        (value) => {items = object.getItems,
-       setState(() {
+       if(mounted){
+          setState(() {
         done = true;
-      })
+      })}
        });
     }
     isInit=false;
