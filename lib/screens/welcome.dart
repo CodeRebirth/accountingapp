@@ -9,6 +9,8 @@ class Welcome extends StatefulWidget {
 
 class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
   var signupmode = false;
+  final TextEditingController emailController = new TextEditingController();
+  final TextEditingController passwordController = new TextEditingController();
   late AnimationController animationController;
   late Animation<double> animate;
   late AnimationController opacityController;
@@ -32,6 +34,19 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
     opacityController.forward();
     super.initState();
   }
+
+  void onSaved() {
+    late final String email;
+    late final String password;
+
+    email = emailController.value.text;
+    password = passwordController.value.text;
+
+    print(email);
+    print(password);
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +111,8 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
                     color: Colors.yellow[900]!,
                     width: 1.0,
                   ),
-                ),)
+                ),),
+                controller: emailController,
             ),
             SizedBox(height:20),
             TextFormField(
@@ -116,7 +132,9 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
                     color: Colors.yellow[900]!,
                     width: 1.0,
                   ),
-                ),)),
+                ),),
+                controller: passwordController
+                ),
             SizedBox(height:20),
             Visibility(
               visible: signupmode?true:false,
@@ -136,8 +154,9 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
                     borderSide: BorderSide(
                       color: Colors.yellow[900]!,
                       width: 1.0,
-                    ),
-                  ),)),
+                    ))),
+                  controller: passwordController,
+                  ),
             ),
                 SizedBox(height:20),
                 OutlinedButton(
@@ -146,8 +165,8 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
                     backgroundColor: MaterialStateProperty.all(Colors.blue[900]),
                     minimumSize: MaterialStateProperty.all(Size(100,40))
                     ),
-                  onPressed: (){
-                }, child: Text(signupmode?"Sign up":"Log in",style: TextStyle(color: Colors.white),)),
+                  onPressed:onSaved,
+                  child: Text(signupmode?"Sign up":"Log in",style: TextStyle(color: Colors.white),)),
                 Spacer(flex: 1,),
                 InkWell(
                     onTap:(){
