@@ -1,6 +1,7 @@
-
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../widgets/clipper.dart';
+import '../provider/auth.dart';
 
 class Welcome extends StatefulWidget {
   @override
@@ -8,9 +9,11 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
+  late final String email;
+  late final String password;
   var signupmode = false;
-  final TextEditingController emailController = new TextEditingController();
-  final TextEditingController passwordController = new TextEditingController();
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
   late AnimationController animationController;
   late Animation<double> animate;
   late AnimationController opacityController;
@@ -19,7 +22,7 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
 @override
   void initState() {
     animationController = new AnimationController(vsync: this,duration: Duration(milliseconds:1000));
-    animate = Tween<double>(begin: 0,end:1).animate(CurvedAnimation(parent: animationController,curve:Curves.easeOut))..addListener(() {
+    animate = Tween<double>(begin: 0,end:1).animate(CurvedAnimation(parent: animationController,curve:Curves.easeOut))..addListener((){
       setState(() {
         
       });
@@ -36,15 +39,10 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
   }
 
   void onSaved() {
-    late final String email;
-    late final String password;
-
     email = emailController.value.text;
     password = passwordController.value.text;
-
-    print(email);
-    print(password);
-
+    emailController.clear();
+    passwordController.clear();
   }
 
   @override
@@ -67,9 +65,8 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
               decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.bottomCenter,end: Alignment.topCenter,
               colors: [Colors.white,Colors.white])),
               child:Column(children: [
-              ],)
-            ),
-      ),
+              ],)),
+              ),
       Positioned(
            top: 140,
            bottom:0,
@@ -102,13 +99,13 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
                   borderSide: BorderSide(
-                    color: Colors.yellow[900]!,
+                    color: Colors.blue[900]!,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
                   borderSide: BorderSide(
-                    color: Colors.yellow[900]!,
+                    color: Colors.blue[900]!,
                     width: 1.0,
                   ),
                 ),),
@@ -123,41 +120,18 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
                   borderSide: BorderSide(
-                    color: Colors.yellow[900]!,
+                    color: Colors.blue[900]!,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
                   borderSide: BorderSide(
-                    color: Colors.yellow[900]!,
+                    color: Colors.blue[900]!,
                     width: 1.0,
                   ),
                 ),),
                 controller: passwordController
                 ),
-            SizedBox(height:20),
-            Visibility(
-              visible: signupmode?true:false,
-                child: TextFormField(
-                decoration:InputDecoration(
-                  labelText: "Confirm Password",
-                  labelStyle: TextStyle(color: Colors.yellow[900]),
-                  fillColor: Colors.white,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25.0),
-                    borderSide: BorderSide(
-                      color: Colors.yellow[900]!,
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25.0),
-                    borderSide: BorderSide(
-                      color: Colors.yellow[900]!,
-                      width: 1.0,
-                    ))),
-                  controller: passwordController,
-                  ),
-            ),
                 SizedBox(height:20),
                 OutlinedButton(
                   style: ButtonStyle(
@@ -165,7 +139,15 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin{
                     backgroundColor: MaterialStateProperty.all(Colors.blue[900]),
                     minimumSize: MaterialStateProperty.all(Size(100,40))
                     ),
-                  onPressed:onSaved,
+                  onPressed:()=>{
+                    onSaved(),
+                    if(signupmode){
+                      Provider.of<Auth>(context,listen:false).signup(email,password)
+                    }
+                    else{
+                      Provider.of<Auth>(context,listen:false).login(email,password)
+                    }
+                  },
                   child: Text(signupmode?"Sign up":"Log in",style: TextStyle(color: Colors.white),)),
                 Spacer(flex: 1,),
                 InkWell(

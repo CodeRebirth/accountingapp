@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'provider/auth.dart';
 import 'screens/billing.dart';
 import 'screens/navpage.dart';
 import 'screens/scanner.dart';
@@ -20,32 +21,31 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [  
+        ChangeNotifierProvider.value(value: Auth()),
         ChangeNotifierProvider<Products>(create: (ctx)=>Products(),),
         ChangeNotifierProvider<InvProducts>(create: (ctx)=>InvProducts(),),
         ],
-          child: (
-        MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            appBarTheme: AppBarTheme(color: Colors.white),
-            primaryColor: Colors.green[300],
-            fontFamily: "Georgia",
-            shadowColor: Colors.grey,
-            textTheme: TextTheme(
-              headline1: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold)
-            )
-          ),
-          initialRoute: "/",
-          routes: {
-            "/":(context)=> Welcome(),
-            "homepage":(context)=>HomePage(),
-            "navpage":(context)=>NavPage(),
-            "billing":(context)=>Billing(),
-            "inventory":(context)=>Inventory(),
-            "billViewer":(context)=>BillViewer(),
-            "scanner":(context)=>Scanner()
-          },
-        )
+        child: Consumer<Auth>(builder: (ctx,auth,_)=> MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              appBarTheme: AppBarTheme(color: Colors.white),
+              primaryColor: Colors.blue[900],
+              fontFamily: "Georgia",
+              shadowColor: Colors.grey,
+              textTheme: TextTheme(
+                headline1: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold)
+              )
+            ),
+            home:auth.isAuth?NavPage():Welcome(),
+            routes: {
+              "homepage":(context)=>HomePage(),
+              "navpage":(context)=>NavPage(),
+              "billing":(context)=>Billing(),
+              "inventory":(context)=>Inventory(),
+              "billViewer":(context)=>BillViewer(),
+              "scanner":(context)=>Scanner()
+            },
+        ),
       ),
     );
   }
