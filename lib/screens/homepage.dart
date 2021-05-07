@@ -6,11 +6,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        centerTitle:true,
-        title:Text("Welcome",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold)),
-        elevation: 0,
-      ),
         body:Container(
         child:PostCarousal()       
 ),

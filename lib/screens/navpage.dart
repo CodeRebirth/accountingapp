@@ -20,6 +20,11 @@ class _NavPageState extends State<NavPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle:true,
+        title:Text("Welcome",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold)),
+        elevation: 0,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         unselectedItemColor: Colors.black,

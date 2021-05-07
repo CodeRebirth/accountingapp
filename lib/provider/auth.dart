@@ -13,7 +13,6 @@ return token !=  null;
 }
 
 get token{
-// ignore: unnecessary_null_comparison
 if (_expires !=null && _expires!.isAfter(DateTime.now()) && _token != null){
   return _token;
 }
@@ -36,7 +35,6 @@ try{
 }
 
 Future<void> login(email,password) async {
-
 const url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA6yl0rtDuvKvZs5HK5Cr8SGEAeFNTvxJ4";
 final uri = Uri.parse(url);
 try{
