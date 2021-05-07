@@ -21,6 +21,7 @@ class _NavPageState extends State<NavPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue[900],
         centerTitle:true,
         title:Text("Welcome",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold)),
         elevation: 0,
