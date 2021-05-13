@@ -29,7 +29,13 @@ class MyApp extends StatelessWidget {
             return previousProduct;
           }
         ),
-        ChangeNotifierProvider<InvProducts>(create: (ctx)=>InvProducts(),),
+        ChangeNotifierProxyProvider<Auth,InvProducts>(
+          create: (ctx)=>InvProducts(),
+          update: (ctx,auth,previousProduct){
+            previousProduct!.authtoken = auth.token;
+            return previousProduct;
+          }
+        ),
         ],
         child: Consumer<Auth>(builder: (ctx,auth,_)=> MaterialApp(
             debugShowCheckedModeBanner: false,
