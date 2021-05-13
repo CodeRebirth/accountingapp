@@ -3,9 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Products with ChangeNotifier{
+late String authtoken;
 List<Product> products = [];
 List<Product> fetchItems = [];
 List keys=[];
+
+set auth(token){
+this.authtoken = token;
+notifyListeners();
+}
+
 static const url = "https://accountingapp-a68b2-default-rtdb.firebaseio.com/products.json";
 var uri = Uri.parse(url);
 
@@ -30,9 +37,10 @@ print(err);
 }
 
 Future<void>getProducts() async{
+var url = Uri.parse("https://accountingapp-a68b2-default-rtdb.firebaseio.com/products.json?auth=$authtoken");
 var tempKey = [];
 try{
-var response = await http.get(uri);
+var response = await http.get(url);
 var extracted = json.decode(response.body)as Map<String,dynamic> ;
 extracted.forEach((key,value){
 tempKey.add(key);
@@ -44,7 +52,7 @@ keys=tempKey;
 }
 
 Future<void> getitem(id) async{
-  var url = Uri.parse("https://accountingapp-a68b2-default-rtdb.firebaseio.com/products/$id.json");
+  var url = Uri.parse("https://accountingapp-a68b2-default-rtdb.firebaseio.com/products/$id.json?auth=$authtoken");
   List<Product> items = [];
   try{
     var response = await http.get(url);

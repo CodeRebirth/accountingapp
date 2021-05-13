@@ -15,8 +15,10 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin {
     'email': '',
     'password': '',
   };
+
   bool signupmode = false;
-  
+  bool loading = false;
+
   late AnimationController animationController;
   late Animation<double> animate;
   late TextEditingController passwordController = new TextEditingController();
@@ -51,17 +53,15 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin {
       return;
     }
     _formKey.currentState!.save();
-
+  setState(() {
+    loading = true;
+  });
   if(signupmode){
-    await Provider.of<Auth>(context,listen:false).signup(data['email'], data['password']);
+    await Provider.of<Auth>(context,listen:false).signup(data['email'], data['password']).then((value) => {setState(() {loading=false;})});
   }else{
-    await Provider.of<Auth>(context,listen:false).login(data['email'], data['password']);
+    await Provider.of<Auth>(context,listen:false).login(data['email'], data['password']).then((value) => {setState(() {loading=false;})});
   }
-
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -215,6 +215,9 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin {
                         }:null
                       ),
                     ),
+                    SizedBox(height: signupmode?20:0,),
+                    loading?
+                    CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.yellow[700]!),):
                     OutlinedButton(
                         style: ButtonStyle(
                             elevation: MaterialStateProperty.all(5),
