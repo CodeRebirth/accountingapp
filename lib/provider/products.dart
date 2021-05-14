@@ -13,17 +13,15 @@ this.authtoken = token;
 notifyListeners();
 }
 
-static const url = "https://accountingapp-a68b2-default-rtdb.firebaseio.com/products.json";
-var uri = Uri.parse(url);
-
 void addProduct(value){
     products.add(value);
     notifyListeners();
   }
 
 Future<void> saved() async{
+final url = Uri.parse("https://accountingapp-a68b2-default-rtdb.firebaseio.com/products.json?auth=$authtoken");
 try{
-  await http.post(uri,body:json.encode(
+  await http.post(url,body:json.encode(
     {
       "bills":products.map((value) =>{
         "name":value.name,
@@ -37,7 +35,7 @@ print(err);
 }
 
 Future<void>getProducts() async{
-var url = Uri.parse("https://accountingapp-a68b2-default-rtdb.firebaseio.com/products.json?auth=$authtoken");
+final url = Uri.parse("https://accountingapp-a68b2-default-rtdb.firebaseio.com/products.json?auth=$authtoken");
 var tempKey = [];
 try{
 var response = await http.get(url);
@@ -52,8 +50,8 @@ keys=tempKey;
 }
 
 Future<void> getitem(id) async{
-  var url = Uri.parse("https://accountingapp-a68b2-default-rtdb.firebaseio.com/products/$id.json?auth=$authtoken");
-  List<Product> items = [];
+final url = Uri.parse("https://accountingapp-a68b2-default-rtdb.firebaseio.com/products/$id.json?auth=$authtoken");
+List<Product> items = [];
   try{
     var response = await http.get(url);
     var extracted = json.decode(response.body) as Map<String,dynamic>;

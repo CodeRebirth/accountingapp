@@ -15,7 +15,7 @@ var items = [];
 var fetch;
 
 Future<void> getAll() async{
- var url = Uri.parse("https://accountingapp-a68b2-default-rtdb.firebaseio.com/inventory.json?auth=$authtoken");
+final url = Uri.parse("https://accountingapp-a68b2-default-rtdb.firebaseio.com/inventory.json?auth=$authtoken");
   var temp=[];
   try{
     var response = await http.get(url);
@@ -29,7 +29,7 @@ Future<void> getAll() async{
   }
 }
 Future<void> matchProduct(id) async{
-var url = Uri.parse("https://accountingapp-a68b2-default-rtdb.firebaseio.com/inventory.json?auth=$authtoken");
+final url = Uri.parse("https://accountingapp-a68b2-default-rtdb.firebaseio.com/inventory.json?auth=$authtoken");
 var temp=[];
 if(id==null) {
   return;
