@@ -40,8 +40,7 @@ class MyApp extends StatelessWidget {
         child: Consumer<Auth>(builder: (ctx,auth,_)=> MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              appBarTheme: AppBarTheme(color: Colors.white),
-              primaryColor: Colors.blue[900],
+              primaryColor: Colors.white,
               fontFamily: "Georgia",
               shadowColor: Colors.grey,
               textTheme: TextTheme(

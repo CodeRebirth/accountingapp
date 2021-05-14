@@ -34,6 +34,7 @@ class _MyBillState extends State<MyBill> {
   Widget build(BuildContext context){
     return Scaffold(
       body: done?Container(
+        color:Colors.white,
         height:MediaQuery.of(context).size.height,
         child: ListView.builder(
           itemCount: key.length,

@@ -16,7 +16,11 @@ notifyListeners();
 void addProduct(value){
     products.add(value);
     notifyListeners();
-  }
+}
+
+get prod{
+  return [...products];
+}
 
 Future<void> saved() async{
 final url = Uri.parse("https://accountingapp-a68b2-default-rtdb.firebaseio.com/products.json?auth=$authtoken");
@@ -76,10 +80,7 @@ get getkeys{
 get fetchItem{
 return [...fetchItems];
 }
-//getter
-get prod{
-  return [...products];
-}
+
 }
 
 

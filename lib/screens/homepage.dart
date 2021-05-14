@@ -7,6 +7,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
         body:Container(
+        color: Colors.white,
         child:PostCarousal()       
 ),
 );}

@@ -37,6 +37,7 @@ class _BillViewerState extends State<BillViewer> {
   Widget build(BuildContext context) {  
     return Scaffold(
      body: done ? Container(
+       color: Colors.white,
        child: ListView.builder( 
             itemBuilder: (context, index) {
                 return Card(
