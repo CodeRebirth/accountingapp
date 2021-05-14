@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'homepage.dart';
-import 'more.dart';
-import 'mybill.dart';
-import 'settings.dart';
+import '../widgets/homepage.dart';
+import '../widgets/more.dart';
+import '../widgets/mybill.dart';
+import '../widgets/settings.dart';
+import '../provider/auth.dart';
+import 'package:provider/provider.dart';
+
 
 class NavPage extends StatefulWidget {
   @override
@@ -23,6 +26,14 @@ class _NavPageState extends State<NavPage> {
       appBar: AppBar(
         centerTitle:true,
         title:Text("Welcome",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color:Colors.black)),
+        actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(icon:Icon(Icons.logout),onPressed: (){
+                Provider.of<Auth>(context,listen:false).logout();
+              }),
+            )
+          ],
         elevation: 0,
       ),
       bottomNavigationBar: BottomNavigationBar(

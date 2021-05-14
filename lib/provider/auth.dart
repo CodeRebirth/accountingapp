@@ -6,7 +6,7 @@ class Auth extends ChangeNotifier{
 
 String? _token; 
 DateTime? _expires;
-late String _userId;
+late String? _userId;
 
 bool get isAuth {
 return token !=  null;
@@ -51,4 +51,10 @@ return authenticate(email,password,"signUp");
 Future<void> login(email,password) async {
 return authenticate(email,password,"signInWithPassword");
 }
+
+void logout(){
+  _token = null;
+  notifyListeners();
+}
+
 }

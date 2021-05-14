@@ -35,9 +35,9 @@ class _InventoryState extends State<Inventory> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.blue[900],
-        title:Text("Inventory")),
-
+        title:Text("Inventory",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color:Colors.black))),
       body: done?Column(
           children: [
             SizedBox(height: 20,),

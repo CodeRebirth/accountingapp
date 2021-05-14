@@ -36,7 +36,10 @@ class _BillViewerState extends State<BillViewer> {
   @override
   Widget build(BuildContext context) {  
     return Scaffold(
-     body: done ? Container(
+    appBar: AppBar(centerTitle: true,
+    backgroundColor: Colors.blue[900],
+    title:Text("Bill Product",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color:Colors.black))),
+    body: done ? Container(
        color: Colors.white,
        child: ListView.builder( 
             itemBuilder: (context, index) {
@@ -67,7 +70,6 @@ class _BillViewerState extends State<BillViewer> {
               },
 itemCount: items.length,
  ),
-     ) :Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.green),)),
-    );
+     ) :Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.green),)));
   }
 }

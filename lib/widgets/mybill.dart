@@ -18,7 +18,7 @@ class _MyBillState extends State<MyBill> {
 @override
   void didChangeDependencies() {
   
-  var object = Provider.of<Products>(context,listen:false);
+  var object = Provider.of<Products>(context);
   object.getProducts().then((value) => {
     key = object.getkeys,
     if(mounted){
@@ -32,8 +32,7 @@ class _MyBillState extends State<MyBill> {
   }
   @override
   Widget build(BuildContext context){
-    return Scaffold(
-      body: done?Container(
+    return done?Container(
         color:Colors.white,
         height:MediaQuery.of(context).size.height,
         child: ListView.builder(
@@ -67,7 +66,6 @@ class _MyBillState extends State<MyBill> {
                 ));
           }
         )
-      ):Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.green),))
-    );
+      ):Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.green),));
   }
 }

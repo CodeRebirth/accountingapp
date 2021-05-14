@@ -9,7 +9,7 @@ import 'provider/products.dart';
 import 'provider/inventory.dart';
 import 'screens/billViewer.dart';
 import 'screens/inventory.dart';
-import 'screens/homepage.dart';
+import 'widgets/homepage.dart';
 
 
 void main() {

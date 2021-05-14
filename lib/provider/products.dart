@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Products with ChangeNotifier{
-late String authtoken;
-late String userId;
+late String? authtoken;
+late String? userId;
 List<Product> products = [];
 List<Product> fetchItems = [];
 List keys=[];

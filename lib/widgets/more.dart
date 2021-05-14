@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/clipper.dart';
+import 'clipper.dart';
 
 class More extends StatefulWidget {
   @override
