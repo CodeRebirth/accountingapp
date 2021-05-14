@@ -6,10 +6,15 @@ class Auth extends ChangeNotifier{
 
 String? _token; 
 DateTime? _expires;
-// late String _userId;
+late String _userId;
 
 bool get isAuth {
 return token !=  null;
+}
+
+get userId{
+  if(isAuth)
+  return _userId;
 }
 
 get token{
@@ -31,6 +36,7 @@ var response = await http.post(uri,body:json.encode({
     }));
 final data = json.decode(response.body);
       _token =data["idToken"];
+      _userId = data["localId"];
       _expires=DateTime.now().add(Duration(seconds: int.parse(data["expiresIn"])));
       notifyListeners();
 }catch(e){

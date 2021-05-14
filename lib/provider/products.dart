@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 
 class Products with ChangeNotifier{
 late String authtoken;
+late String userId;
 List<Product> products = [];
 List<Product> fetchItems = [];
 List keys=[];
@@ -11,6 +12,12 @@ List keys=[];
 set auth(token){
 this.authtoken = token;
 notifyListeners();
+}
+
+set userID(userId){
+this.userId = userId;
+notifyListeners();
+
 }
 
 void addProduct(value){
@@ -30,7 +37,8 @@ try{
       "bills":products.map((value) =>{
         "name":value.name,
         "price":value.price
-      }).toList()
+      }).toList(),
+      "creatorID":userId
     }
   ));
 }catch(err){
@@ -39,7 +47,8 @@ print(err);
 }
 
 Future<void>getProducts() async{
-final url = Uri.parse("https://accountingapp-a68b2-default-rtdb.firebaseio.com/products.json?auth=$authtoken");
+
+final url = Uri.parse('https://accountingapp-a68b2-default-rtdb.firebaseio.com/products.json?auth=$authtoken&orderBy="creatorID"&equalTo="$userId"');
 var tempKey = [];
 try{
 var response = await http.get(url);
@@ -79,10 +88,7 @@ get getkeys{
 }
 get fetchItem{
 return [...fetchItems];
-}
-
-}
-
+}}
 
 class Product{
 String name;
