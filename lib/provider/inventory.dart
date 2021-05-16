@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 class InvProducts extends ChangeNotifier{
 
-late String authtoken;
+late String? authtoken;
 
 set auth(token){
 this.authtoken = token;
