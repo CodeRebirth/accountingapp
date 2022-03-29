@@ -26,7 +26,7 @@ return null;
 
 Future<void> authenticate(email, password, urlcatch) async{
 
-final url = "https://identitytoolkit.googleapis.com/v1/accounts:$urlcatch?key=AIzaSyA6yl0rtDuvKvZs5HK5Cr8SGEAeFNTvxJ4";
+final url = "https://identitytoolkit.googleapis.com/v1/accounts:$urlcatch?key=";
 final uri = Uri.parse(url);
 try{
 var response = await http.post(uri,body:json.encode({
