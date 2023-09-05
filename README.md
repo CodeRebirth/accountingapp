@@ -1,5 +1,3 @@
 # accountingapp
-Accounting app for android.
-Ios will be added later
-
+Accounting app
 #install flutter and do flutter run
